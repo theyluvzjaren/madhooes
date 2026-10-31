@@ -1,0 +1,27 @@
+
+local __K = 66
+local __D = {{138,167,174,174,177,98,134,167,174,182,163}}
+local __G = {}
+for i=1, #__D do
+    local t = __D[i]
+    local r = {}
+    for j=1, #t do
+        r[j] = string.char((t[j] - __K) % 256)
+    end
+    __G[i] = table.concat(r)
+end
+
+-- Junk / Opaque Predicate
+local _0xJ = 1
+local _0xJ2 = _0xJ + 1
+if _0xJ2 == 2 then _0xJ = _0xJ end
+
+-- Anti-Debug / Anti-Hook
+pcall(function()
+    if debug and debug.gethook then
+        local h = debug.gethook()
+        if h then while true do end end
+    end
+end)
+
+print(__G[0x1])
