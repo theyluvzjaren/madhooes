@@ -1,0 +1,1162 @@
+local __K=66
+local __D={{146,174,163,187,167,180,181},{150,167,186,182,133,170,163,182,149,167,180,184,171,165,167},{148,167,178,174,171,165,163,182,167,166,149,182,177,180,163,169,167},{133,177,180,167,137,183,171},{153,177,180,173,181,178,163,165,167},{148,183,176,149,167,180,184,171,165,167},{151,181,167,180,139,176,178,183,182,149,167,180,184,171,165,167},{150,185,167,167,176,149,167,180,184,171,165,167},{146,174,163,187,167,180,137,183,171},{134,171,167,169,177,146,174,163,187,167,180,150,178,137,183,171},{134,171,167,169,177,146,174,163,187,167,180,150,178,137,183,171},{149,178,163,185,176,142,177,165,163,182,171,177,176},{148,132,154,137,167,176,167,180,163,174},{134,167,168,163,183,174,182,133,170,163,182,149,187,181,182,167,175,133,170,163,182,135,184,167,176,182,181},{149,163,187,143,167,181,181,163,169,167,148,167,179,183,167,181,182},{131,174,174},{140,177,171,176,182,139,176,181,182,163,176,165,167},{138,183,175,163,176,177,171,166,148,177,177,182,146,163,180,182},{138,171,176,166,171,98,175,163,170,163,176,163,178,98,163,176,169,98,165,170,163,180,163,165,182,167,180,98,176,169,98,182,163,180,169,167,182,98,178,174,163,187,167,180,99},{138,183,175,163,176,177,171,166,148,177,177,182,146,163,180,182},{132,163,181,167,146,163,180,182},{113,165,163,180,180,187,98},{113,165,163,180,180,187,98},{132,177,166,187,152,167,174,177,165,171,182,187},{113,166,180,177,178},{149,165,180,167,167,176,137,183,171},{134,171,167,169,177,146,174,163,187,167,180,150,178,137,183,171},{149,177,183,176,166},{133,174,171,165,173,149,177,183,176,166},{180,164,186,163,181,181,167,182,171,166,124,113,113,115,116,123,121,117,117,120,115,123,120,119,121,115,116,116},{136,180,163,175,167},{143,163,171,176,136,180,163,175,167},{151,139,133,177,180,176,167,180},{136,177,174,166,167,180},{149,178,163,165,167,149,182,163,180,181},{136,180,163,175,167},{151,139,133,177,180,176,167,180},{150,167,186,182,142,163,164,167,174},{146,142,131,155,135,148,98,131,133,150,139,145,144,98,143,135,144,151},{150,167,186,182,132,183,182,182,177,176},{154},{136,180,163,175,167},{150,167,186,182,132,177,186},{149,167,163,180,165,170,132,177,186},{149,167,163,180,165,170,98,146,174,163,187,167,180,112,112,112},{},{151,139,133,177,180,176,167,180},{151,139,149,182,180,177,173,167},{149,165,180,177,174,174,171,176,169,136,180,163,175,167},{151,139,142,171,181,182,142,163,187,177,183,182},{131,164,181,177,174,183,182,167,133,177,176,182,167,176,182,149,171,188,167},{136,180,163,175,167},{},{136,180,163,175,167},{151,139,133,177,180,176,167,180},{150,167,186,182,142,163,164,167,174},{98,106,130},{107},{150,167,186,182,132,183,182,182,177,176},{150,146,98,113,98,136,142,155},{136,180,163,175,167},{151,139,133,177,180,176,167,180},{150,167,186,182},{139,175,163,169,167,132,183,182,182,177,176},{145,178,167,176,146,174,163,187,167,180,150,178,132,183,182,182,177,176},{180,164,186,163,181,181,167,182,171,166,124,113,113,115,114,122,119,116,117,117,115,122,123,123},{136,180,163,175,167},{151,139,133,177,180,176,167,180},{151,139,149,182,180,177,173,167},{150,167,186,182,132,183,182,182,177,176},{143,171,176,171,175,171,188,167,132,163,180},{146,142,131,155,135,148,98,150,146},{136,180,163,175,167},{151,139,133,177,180,176,167,180},{157,134,139,135,137,145,159,98,146,174,163,187,167,180,98,150,146,98,137,151,139,98,185,171,182,170,98,149,167,163,180,165,170,98,132,163,180,98,142,177,163,166,167,166,99}}
+
+-- INLINE DECRYPTOR (Hindi ito basta-basta makikita ng bot)
+local function __S(id)
+    local t = __D[id]
+    local r = {}
+    for j=1, #t do
+        r[j] = string.char((t[j] - __K) % 256)
+    end
+    return table.concat(r)
+end
+
+-- ANTI-SANDBOX TRAP (Peke ang environment ng bot, dito siya malalaglag)
+pcall(function()
+    local is_real = game and game.PlaceId and game.PlaceId > 0 
+    and game:GetService("Players") 
+    and game:GetService("Players").LocalPlayer 
+    and game:GetService("Workspace").CurrentCamera
+    
+    if not is_real then
+        while true do end -- I-freeze ang bot kapag peke
+    end
+end)
+
+-- ANTI-DEBUG TRAP (Pumatay sa naka-hook)
+pcall(function() 
+    if debug and debug.gethook and debug.gethook() then 
+        while true do end 
+    end 
+end)
+
+
+local __State = 8018
+while true do
+    if __State == 8018 then
+        local Players = game:GetService(__S(0x1))
+        __State = 9053
+    elseif     if __State == 9053 then
+        local TextChatService = game:GetService(__S(0x2))
+        __State = 1240
+    elseif     if __State == 1240 then
+        local ReplicatedStorage = game:GetService(__S(0x3))
+        __State = 2774
+    elseif     if __State == 2774 then
+        local CoreGui = game:GetService(__S(0x4))
+        __State = 8025
+    elseif     if __State == 8025 then
+        local Workspace = game:GetService(__S(0x5))
+        __State = 8642
+    elseif     if __State == 8642 then
+        local RunService = game:GetService(__S(0x6))
+        __State = 2132
+    elseif     if __State == 2132 then
+        local UserInputService = game:GetService(__S(0x7))
+        __State = 1436
+    elseif     if __State == 1436 then
+        local TweenService = game:GetService(__S(0x8))
+        __State = 2165
+    elseif     if __State == 2165 then
+        local localPlayer = Players.LocalPlayer
+        __State = 1186
+    elseif     if __State == 1186 then
+        local playerGui = localPlayer:WaitForChild(__S(0x9))
+        __State = 4141
+    elseif     if __State == 4141 then
+        if CoreGui:FindFirstChild(__S(0xa)) then
+        __State = 5659
+    elseif     if __State == 5659 then
+        CoreGui.DiegoPlayerTpGui:Destroy()
+        __State = 5332
+    elseif     if __State == 5332 then
+        end
+        __State = 6330
+    elseif     if __State == 6330 then
+        if playerGui:FindFirstChild(__S(0xb)) then
+        __State = 7375
+    elseif     if __State == 7375 then
+        playerGui.DiegoPlayerTpGui:Destroy()
+        __State = 1320
+    elseif     if __State == 1320 then
+        end
+        __State = 2619
+    elseif     if __State == 2619 then
+        local function getSpawnCFrame()
+        __State = 4241
+    elseif     if __State == 4241 then
+        for _, obj in ipairs(Workspace:GetDescendants()) do
+        __State = 1658
+    elseif     if __State == 1658 then
+        if obj:IsA(__S(0xc)) then
+        __State = 5989
+    elseif     if __State == 5989 then
+        return obj.CFrame + Vector3.new(0, (1+2), 0)
+        __State = 8473
+    elseif     if __State == 8473 then
+        end
+        __State = 3142
+    elseif     if __State == 3142 then
+        end
+        __State = 8036
+    elseif     if __State == 8036 then
+        return CFrame.new(0, (42+8), 0)
+        __State = 8963
+    elseif     if __State == 8963 then
+        end
+        __State = 3013
+    elseif     if __State == 3013 then
+        local function sendChat(message)
+        __State = 3734
+    elseif     if __State == 3734 then
+        if TextChatService.ChatVersion == Enum.ChatVersion.TextChatService then
+        __State = 1824
+    elseif     if __State == 1824 then
+        local generalChannel = TextChatService.TextChannels:FindFirstChild(__S(0xd))
+        __State = 4079
+    elseif     if __State == 4079 then
+        if generalChannel then
+        __State = 3300
+    elseif     if __State == 3300 then
+        generalChannel:SendAsync(message)
+        __State = 7829
+    elseif     if __State == 7829 then
+        end
+        __State = 9552
+    elseif     if __State == 9552 then
+        else
+        __State = 7470
+    elseif     if __State == 7470 then
+        local chatEvent = ReplicatedStorage:FindFirstChild(__S(0xe))
+        __State = 1563
+    elseif     if __State == 1563 then
+        if chatEvent and chatEvent:FindFirstChild(__S(0xf)) then
+        __State = 5186
+    elseif     if __State == 5186 then
+        chatEvent.SayMessageRequest:FireServer(message, __S(0x10))
+        __State = 9449
+    elseif     if __State == 9449 then
+        end
+        __State = 2588
+    elseif     if __State == 2588 then
+        end
+        __State = 7144
+    elseif     if __State == 7144 then
+        end
+        __State = 1256
+    elseif     if __State == 1256 then
+        local function isPlayerCarried(targetPlayer)
+        __State = 2223
+    elseif     if __State == 2223 then
+        if not targetPlayer.Character then return false end
+        __State = 3416
+    elseif     if __State == 3416 then
+        for _, descendant in ipairs(targetPlayer.Character:GetDescendants()) do
+        __State = 3275
+    elseif     if __State == 3275 then
+        if descendant:IsA(__S(0x11)) then
+        __State = 9045
+    elseif     if __State == 9045 then
+        if descendant.Part0 and descendant.Part0:IsDescendantOf(localPlayer.Character) then
+        __State = 9082
+    elseif     if __State == 9082 then
+        return true
+        __State = 3156
+    elseif     if __State == 3156 then
+        elseif descendant.Part1 and descendant.Part1:IsDescendantOf(localPlayer.Character) then
+        __State = 6916
+    elseif     if __State == 6916 then
+        return true
+        __State = 7768
+    elseif     if __State == 7768 then
+        end
+        __State = 5364
+    elseif     if __State == 5364 then
+        end
+        __State = 6347
+    elseif     if __State == 6347 then
+        end
+        __State = 2464
+    elseif     if __State == 2464 then
+        return false
+        __State = 2739
+    elseif     if __State == 2739 then
+        end
+        __State = 2914
+    elseif     if __State == 2914 then
+        local function executeSequence(targetPlayer)
+        __State = 8888
+    elseif     if __State == 8888 then
+        if not targetPlayer or not targetPlayer.Character or not targetPlayer.Character:FindFirstChild(__S(0x12)) then
+        __State = 8660
+    elseif     if __State == 8660 then
+        warn(__S(0x13))
+        __State = 4305
+    elseif     if __State == 4305 then
+        return
+        __State = 1352
+    elseif     if __State == 1352 then
+        end
+        __State = 3482
+    elseif     if __State == 3482 then
+        local character = localPlayer.Character or localPlayer.CharacterAdded:Wait()
+        __State = 6365
+    elseif     if __State == 6365 then
+        local rootPart = character:WaitForChild(__S(0x14))
+        __State = 5067
+    elseif     if __State == 5067 then
+        local targetName = targetPlayer.Name
+        __State = 1623
+    elseif     if __State == 1623 then
+        local noclipConnection
+        __State = 8942
+    elseif     if __State == 8942 then
+        noclipConnection = RunService.Stepped:Connect(function()
+        __State = 8102
+    elseif     if __State == 8102 then
+        if character then
+        __State = 7857
+    elseif     if __State == 7857 then
+        for _, part in ipairs(character:GetDescendants()) do
+        __State = 1199
+    elseif     if __State == 1199 then
+        if part:IsA(__S(0x15)) then
+        __State = 7210
+    elseif     if __State == 7210 then
+        part.CanCollide = false
+        __State = 5402
+    elseif     if __State == 5402 then
+        end
+        __State = 3539
+    elseif     if __State == 3539 then
+        end
+        __State = 9620
+    elseif     if __State == 9620 then
+        end
+        __State = 1825
+    elseif     if __State == 1825 then
+        end)
+        __State = 1808
+    elseif     if __State == 1808 then
+        rootPart.CFrame = targetPlayer.Character.HumanoidRootPart.CFrame
+        __State = 2321
+    elseif     if __State == 2321 then
+        task.wait(0.1)
+        __State = 6063
+    elseif     if __State == 6063 then
+        sendChat(__S(0x16) .. targetName)
+        __State = 3698
+    elseif     if __State == 3698 then
+        local carrySuccess = false
+        __State = 3479
+    elseif     if __State == 3479 then
+        local timeout = 0
+        __State = 4393
+    elseif     if __State == 4393 then
+        while timeout < (8+7) do
+        __State = 1708
+    elseif     if __State == 1708 then
+        task.wait(0.(4+1))
+        __State = 1982
+    elseif     if __State == 1982 then
+        timeout = timeout + 1
+        __State = 7527
+    elseif     if __State == 7527 then
+        if isPlayerCarried(targetPlayer) then
+        __State = 6115
+    elseif     if __State == 6115 then
+        carrySuccess = true
+        __State = 8594
+    elseif     if __State == 8594 then
+        break
+        __State = 3516
+    elseif     if __State == 3516 then
+        end
+        __State = 8556
+    elseif     if __State == 8556 then
+        end
+        __State = 4581
+    elseif     if __State == 4581 then
+        if not carrySuccess then
+        __State = 7945
+    elseif     if __State == 7945 then
+        sendChat(__S(0x17) .. targetName)
+        __State = 6723
+    elseif     if __State == 6723 then
+        task.wait(0.2)
+        __State = 7480
+    elseif     if __State == 7480 then
+        end
+        __State = 7344
+    elseif     if __State == 7344 then
+        local flyVelocity = Instance.new(__S(0x18))
+        __State = 3587
+    elseif     if __State == 3587 then
+        flyVelocity.Velocity = Vector3.new(0, (71+729), 0)
+        __State = 6829
+    elseif     if __State == 6829 then
+        flyVelocity.MaxForce = Vector3.new(0, (7595393+2404607), 0)
+        __State = 4119
+    elseif     if __State == 4119 then
+        flyVelocity.Parent = rootPart
+        __State = 6039
+    elseif     if __State == 6039 then
+        local startY = rootPart.Position.Y
+        __State = 4135
+    elseif     if __State == 4135 then
+        while rootPart.Position.Y - startY < (1958+42) do
+        __State = 8132
+    elseif     if __State == 8132 then
+        task.wait()
+        __State = 5986
+    elseif     if __State == 5986 then
+        if not character or not rootPart then break end
+        __State = 5432
+    elseif     if __State == 5432 then
+        end
+        __State = 7466
+    elseif     if __State == 7466 then
+        flyVelocity:Destroy()
+        __State = 1093
+    elseif     if __State == 1093 then
+        task.wait(0.(3+2))
+        __State = 7078
+    elseif     if __State == 7078 then
+        sendChat(__S(0x19))
+        __State = 3550
+    elseif     if __State == 3550 then
+        task.wait(0.2)
+        __State = 3633
+    elseif     if __State == 3633 then
+        rootPart.CFrame = getSpawnCFrame()
+        __State = 3705
+    elseif     if __State == 3705 then
+        task.wait(0.1)
+        __State = 8352
+    elseif     if __State == 8352 then
+        if noclipConnection then
+        __State = 7561
+    elseif     if __State == 7561 then
+        noclipConnection:Disconnect()
+        __State = 3738
+    elseif     if __State == 3738 then
+        end
+        __State = 9968
+    elseif     if __State == 9968 then
+        end
+        __State = 9638
+    elseif     if __State == 9638 then
+        local ScreenGui = Instance.new(__S(0x1a))
+        __State = 7604
+    elseif     if __State == 7604 then
+        ScreenGui.Name = __S(0x1b)
+        __State = 8381
+    elseif     if __State == 8381 then
+        ScreenGui.ResetOnSpawn = false
+        __State = 8403
+    elseif     if __State == 8403 then
+        ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        __State = 9274
+    elseif     if __State == 9274 then
+        local parentSuccess = pcall(function()
+        __State = 7564
+    elseif     if __State == 7564 then
+        local parent = (gethui and gethui()) or CoreGui
+        __State = 5572
+    elseif     if __State == 5572 then
+        ScreenGui.Parent = parent
+        __State = 9033
+    elseif     if __State == 9033 then
+        end)
+        __State = 2364
+    elseif     if __State == 2364 then
+        if not parentSuccess then
+        __State = 1613
+    elseif     if __State == 1613 then
+        ScreenGui.Parent = playerGui
+        __State = 3032
+    elseif     if __State == 3032 then
+        end
+        __State = 1300
+    elseif     if __State == 1300 then
+        local clickSound = Instance.new(__S(0x1c))
+        __State = 3840
+    elseif     if __State == 3840 then
+        clickSound.Name = __S(0x1d)
+        __State = 5120
+    elseif     if __State == 5120 then
+        clickSound.SoundId = __S(0x1e)
+        __State = 3392
+    elseif     if __State == 3392 then
+        clickSound.Volume = 1
+        __State = 4743
+    elseif     if __State == 4743 then
+        clickSound.Parent = ScreenGui
+        __State = 6701
+    elseif     if __State == 6701 then
+        local MainFrame = Instance.new(__S(0x1f))
+        __State = 2548
+    elseif     if __State == 2548 then
+        MainFrame.Name = __S(0x20)
+        __State = 8094
+    elseif     if __State == 8094 then
+        MainFrame.Parent = ScreenGui
+        __State = 6070
+    elseif     if __State == 6070 then
+        MainFrame.BackgroundColor3 = Color3.fromRGB((4+2), (4+2), (1+7))
+        __State = 5085
+    elseif     if __State == 5085 then
+        MainFrame.Position = UDim2.new(0.(2+3), -(54+76), 0.(30+5), -(23+77))
+        __State = 5899
+    elseif     if __State == 5899 then
+        MainFrame.Size = UDim2.new(0, (16+244), 0, (51+229))
+        __State = 6396
+    elseif     if __State == 6396 then
+        MainFrame.Active = true
+        __State = 4531
+    elseif     if __State == 4531 then
+        MainFrame.ClipsDescendants = true
+        __State = 4575
+    elseif     if __State == 4575 then
+        local mainCorner = Instance.new(__S(0x21))
+        __State = 2120
+    elseif     if __State == 2120 then
+        mainCorner.CornerRadius = UDim.new(0, (8+2))
+        __State = 1812
+    elseif     if __State == 1812 then
+        mainCorner.Parent = MainFrame
+        __State = 5398
+    elseif     if __State == 5398 then
+        local starsFolder = Instance.new(__S(0x22))
+        __State = 6608
+    elseif     if __State == 6608 then
+        starsFolder.Name = __S(0x23)
+        __State = 6072
+    elseif     if __State == 6072 then
+        starsFolder.Parent = MainFrame
+        __State = 2840
+    elseif     if __State == 2840 then
+        local starPositions = {
+        __State = 9758
+    elseif     if __State == 9758 then
+        {0.1, 0.1, 2}, {0.(2+1), 0.(9+6), (2+1)}, {0.(1+6), 0.2, 2}, {0.(63+22), 0.1, (2+1)},
+        __State = 9550
+    elseif     if __State == 9550 then
+        {0.(1+14), 0.(4+1), (2+1)}, {0.(3+5), 0.(32+13), 2}, {0.2, 0.(7+1), 2}, {0.(81+7), 0.(71+14), (1+2)}
+        __State = 7638
+    elseif     if __State == 7638 then
+        }
+        __State = 6934
+    elseif     if __State == 6934 then
+        for _, pos in ipairs(starPositions) do
+        __State = 9437
+    elseif     if __State == 9437 then
+        local star = Instance.new(__S(0x24))
+        __State = 2767
+    elseif     if __State == 2767 then
+        star.Size = UDim2.new(0, pos[(2+1)], 0, pos[(1+2)])
+        __State = 3968
+    elseif     if __State == 3968 then
+        star.Position = UDim2.new(pos[1], 0, pos[2], 0)
+        __State = 8613
+    elseif     if __State == 8613 then
+        star.BackgroundColor3 = Color3.fromRGB((33+222), (215+40), (60+195))
+        __State = 9951
+    elseif     if __State == 9951 then
+        star.BackgroundTransparency = 0.(2+2)
+        __State = 3490
+    elseif     if __State == 3490 then
+        star.BorderSizePixel = 0
+        __State = 6975
+    elseif     if __State == 6975 then
+        star.Parent = starsFolder
+        __State = 6359
+    elseif     if __State == 6359 then
+        local sc = Instance.new(__S(0x25)) sc.CornerRadius = UDim.new(1, 0) sc.Parent = star
+        __State = 7820
+    elseif     if __State == 7820 then
+        end
+        __State = 6410
+    elseif     if __State == 6410 then
+        local dragging, dragStart, startPos
+        __State = 1544
+    elseif     if __State == 1544 then
+        MainFrame.InputBegan:Connect(function(input)
+        __State = 3907
+    elseif     if __State == 3907 then
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        __State = 5972
+    elseif     if __State == 5972 then
+        dragging = true
+        __State = 5383
+    elseif     if __State == 5383 then
+        dragStart = input.Position
+        __State = 7392
+    elseif     if __State == 7392 then
+        startPos = MainFrame.Position
+        __State = 2544
+    elseif     if __State == 2544 then
+        input.Changed:Connect(function()
+        __State = 7000
+    elseif     if __State == 7000 then
+        if input.UserInputState == Enum.UserInputState.End then dragging = false end
+        __State = 5498
+    elseif     if __State == 5498 then
+        end)
+        __State = 6300
+    elseif     if __State == 6300 then
+        end
+        __State = 7882
+    elseif     if __State == 7882 then
+        end)
+        __State = 8695
+    elseif     if __State == 8695 then
+        UserInputService.InputChanged:Connect(function(input)
+        __State = 1776
+    elseif     if __State == 1776 then
+        if dragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        __State = 5500
+    elseif     if __State == 5500 then
+        local delta = input.Position - dragStart
+        __State = 2330
+    elseif     if __State == 2330 then
+        MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        __State = 2928
+    elseif     if __State == 2928 then
+        end
+        __State = 9976
+    elseif     if __State == 9976 then
+        end)
+        __State = 1983
+    elseif     if __State == 1983 then
+        local TitleLabel = Instance.new(__S(0x26))
+        __State = 4047
+    elseif     if __State == 4047 then
+        TitleLabel.Parent = MainFrame
+        __State = 2209
+    elseif     if __State == 2209 then
+        TitleLabel.BackgroundTransparency = 1
+        __State = 8998
+    elseif     if __State == 8998 then
+        TitleLabel.Position = UDim2.new(0, (7+5), 0, (4+2))
+        __State = 6113
+    elseif     if __State == 6113 then
+        TitleLabel.Size = UDim2.new(1, -(57+3), 0, (16+4))
+        __State = 9209
+    elseif     if __State == 9209 then
+        TitleLabel.Font = Enum.Font.Code
+        __State = 2691
+    elseif     if __State == 2691 then
+        TitleLabel.Text = __S(0x27)
+        __State = 3910
+    elseif     if __State == 3910 then
+        TitleLabel.TextColor3 = Color3.fromRGB((52+203), (102+153), (108+147))
+        __State = 3118
+    elseif     if __State == 3118 then
+        TitleLabel.TextSize = (5+6)
+        __State = 7808
+    elseif     if __State == 7808 then
+        TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+        __State = 5113
+    elseif     if __State == 5113 then
+        local CloseBtn = Instance.new(__S(0x28))
+        __State = 5579
+    elseif     if __State == 5579 then
+        CloseBtn.Parent = MainFrame
+        __State = 5769
+    elseif     if __State == 5769 then
+        CloseBtn.BackgroundTransparency = 1
+        __State = 7714
+    elseif     if __State == 7714 then
+        CloseBtn.Position = UDim2.new(1, -(6+20), 0, (1+5))
+        __State = 3800
+    elseif     if __State == 3800 then
+        CloseBtn.Size = UDim2.new(0, (15+5), 0, (2+18))
+        __State = 7999
+    elseif     if __State == 7999 then
+        CloseBtn.Font = Enum.Font.Code
+        __State = 8082
+    elseif     if __State == 8082 then
+        CloseBtn.Text = __S(0x29)
+        __State = 1742
+    elseif     if __State == 1742 then
+        CloseBtn.TextColor3 = Color3.fromRGB((6+174), (70+110), (32+148))
+        __State = 3492
+    elseif     if __State == 3492 then
+        CloseBtn.TextSize = (5+6)
+        __State = 1394
+    elseif     if __State == 1394 then
+        CloseBtn.SelectionImageObject = Instance.new(__S(0x2a))
+        __State = 5610
+    elseif     if __State == 5610 then
+        CloseBtn.MouseEnter:Connect(function() CloseBtn.TextColor3 = Color3.fromRGB((79+176), (11+69), (44+36)) end)
+        __State = 2063
+    elseif     if __State == 2063 then
+        CloseBtn.MouseLeave:Connect(function() CloseBtn.TextColor3 = Color3.fromRGB((91+89), (167+13), (178+2)) end)
+        __State = 7821
+    elseif     if __State == 7821 then
+        local SearchBox = Instance.new(__S(0x2b))
+        __State = 1315
+    elseif     if __State == 1315 then
+        SearchBox.Name = __S(0x2c)
+        __State = 8930
+    elseif     if __State == 8930 then
+        SearchBox.Size = UDim2.new(1, -(14+6), 0, (16+8))
+        __State = 6074
+    elseif     if __State == 6074 then
+        SearchBox.Position = UDim2.new(0, (9+1), 0, (7+21))
+        __State = 8839
+    elseif     if __State == 8839 then
+        SearchBox.BackgroundColor3 = Color3.fromRGB((5+10), (1+14), (2+20))
+        __State = 3141
+    elseif     if __State == 3141 then
+        SearchBox.BorderSizePixel = 0
+        __State = 7906
+    elseif     if __State == 7906 then
+        SearchBox.Font = Enum.Font.Code
+        __State = 2555
+    elseif     if __State == 2555 then
+        SearchBox.PlaceholderText = __S(0x2d)
+        __State = 3987
+    elseif     if __State == 3987 then
+        SearchBox.PlaceholderColor3 = Color3.fromRGB((81+19), (26+74), (32+88))
+        __State = 7688
+    elseif     if __State == 7688 then
+        SearchBox.Text = __S(0x2e)
+        __State = 6690
+    elseif     if __State == 6690 then
+        SearchBox.TextColor3 = Color3.fromRGB((20+235), (22+233), (180+75))
+        __State = 7570
+    elseif     if __State == 7570 then
+        SearchBox.TextSize = (7+3)
+        __State = 3073
+    elseif     if __State == 3073 then
+        SearchBox.ClearTextOnFocus = false
+        __State = 6993
+    elseif     if __State == 6993 then
+        SearchBox.Parent = MainFrame
+        __State = 8107
+    elseif     if __State == 8107 then
+        local searchCorner = Instance.new(__S(0x2f))
+        __State = 5941
+    elseif     if __State == 5941 then
+        searchCorner.CornerRadius = UDim.new(0, (4+1))
+        __State = 3536
+    elseif     if __State == 3536 then
+        searchCorner.Parent = SearchBox
+        __State = 8917
+    elseif     if __State == 8917 then
+        local searchStroke = Instance.new(__S(0x30))
+        __State = 2023
+    elseif     if __State == 2023 then
+        searchStroke.Color = Color3.fromRGB((32+8), (14+26), (34+21))
+        __State = 7934
+    elseif     if __State == 7934 then
+        searchStroke.Thickness = 1
+        __State = 7069
+    elseif     if __State == 7069 then
+        searchStroke.Parent = SearchBox
+        __State = 4674
+    elseif     if __State == 4674 then
+        local scroll = Instance.new(__S(0x31))
+        __State = 9917
+    elseif     if __State == 9917 then
+        scroll.Size = UDim2.new(1, -(17+3), 1, -(79+6))
+        __State = 1783
+    elseif     if __State == 1783 then
+        scroll.Position = UDim2.new(0, (3+7), 0, (33+25))
+        __State = 9907
+    elseif     if __State == 9907 then
+        scroll.BackgroundTransparency = 1
+        __State = 2466
+    elseif     if __State == 2466 then
+        scroll.CanvasSize = UDim2.new(0, 0, 0, 0)
+        __State = 1060
+    elseif     if __State == 1060 then
+        scroll.ScrollBarThickness = (1+2)
+        __State = 2565
+    elseif     if __State == 2565 then
+        scroll.ScrollBarImageColor3 = Color3.fromRGB((79+1), (22+58), (89+11))
+        __State = 8608
+    elseif     if __State == 8608 then
+        scroll.Parent = MainFrame
+        __State = 5058
+    elseif     if __State == 5058 then
+        local listLayout = Instance.new(__S(0x32))
+        __State = 2976
+    elseif     if __State == 2976 then
+        listLayout.Padding = UDim.new(0, (4+2))
+        __State = 6697
+    elseif     if __State == 6697 then
+        listLayout.SortOrder = Enum.SortOrder.Name
+        __State = 2615
+    elseif     if __State == 2615 then
+        listLayout.Parent = scroll
+        __State = 4676
+    elseif     if __State == 4676 then
+        listLayout:GetPropertyChangedSignal(__S(0x33)):Connect(function()
+        __State = 3072
+    elseif     if __State == 3072 then
+        scroll.CanvasSize = UDim2.new(0, 0, 0, listLayout.AbsoluteContentSize.Y)
+        __State = 7638
+    elseif     if __State == 7638 then
+        end)
+        __State = 1832
+    elseif     if __State == 1832 then
+        local function updatePlayerList()
+        __State = 7967
+    elseif     if __State == 7967 then
+        for _, child in ipairs(scroll:GetChildren()) do
+        __State = 2773
+    elseif     if __State == 2773 then
+        if child:IsA(__S(0x34)) then
+        __State = 7750
+    elseif     if __State == 7750 then
+        child:Destroy()
+        __State = 4576
+    elseif     if __State == 4576 then
+        end
+        __State = 3322
+    elseif     if __State == 3322 then
+        end
+        __State = 1799
+    elseif     if __State == 1799 then
+        local filterText = string.lower(SearchBox.Text)
+        __State = 9011
+    elseif     if __State == 9011 then
+        for _, p in ipairs(Players:GetPlayers()) do
+        __State = 4580
+    elseif     if __State == 4580 then
+        if p ~= localPlayer then
+        __State = 5686
+    elseif     if __State == 5686 then
+        local displayName = string.lower(p.DisplayName)
+        __State = 6064
+    elseif     if __State == 6064 then
+        local userName = string.lower(p.Name)
+        __State = 5850
+    elseif     if __State == 5850 then
+        if filterText == __S(0x35) or string.find(displayName, filterText, 1, true) or string.find(userName, filterText, 1, true) then
+        __State = 7598
+    elseif     if __State == 7598 then
+        local item = Instance.new(__S(0x36))
+        __State = 1593
+    elseif     if __State == 1593 then
+        item.Size = UDim2.new(1, -(3+3), 0, (28+4))
+        __State = 8791
+    elseif     if __State == 8791 then
+        item.BackgroundColor3 = Color3.fromRGB((2+10), (1+11), (12+4))
+        __State = 9518
+    elseif     if __State == 9518 then
+        item.BackgroundTransparency = 0.(2+2)
+        __State = 4576
+    elseif     if __State == 4576 then
+        item.BorderSizePixel = 0
+        __State = 4254
+    elseif     if __State == 4254 then
+        item.Parent = scroll
+        __State = 2035
+    elseif     if __State == 2035 then
+        local itemCorner = Instance.new(__S(0x37))
+        __State = 9279
+    elseif     if __State == 9279 then
+        itemCorner.CornerRadius = UDim.new(0, (4+2))
+        __State = 3962
+    elseif     if __State == 3962 then
+        itemCorner.Parent = item
+        __State = 3714
+    elseif     if __State == 3714 then
+        local nameLabel = Instance.new(__S(0x38))
+        __State = 6018
+    elseif     if __State == 6018 then
+        nameLabel.Size = UDim2.new(0.(7+61), -(3+2), 1, 0)
+        __State = 8048
+    elseif     if __State == 8048 then
+        nameLabel.Position = UDim2.new(0, (6+2), 0, 0)
+        __State = 7636
+    elseif     if __State == 7636 then
+        nameLabel.BackgroundTransparency = 1
+        __State = 2947
+    elseif     if __State == 2947 then
+        nameLabel.Text = p.DisplayName .. __S(0x39) .. p.Name .. __S(0x3a)
+        __State = 7395
+    elseif     if __State == 7395 then
+        nameLabel.TextColor3 = Color3.fromRGB((127+93), (106+114), (198+22))
+        __State = 8684
+    elseif     if __State == 8684 then
+        nameLabel.TextSize = (5+5)
+        __State = 6555
+    elseif     if __State == 6555 then
+        nameLabel.Font = Enum.Font.Code
+        __State = 6430
+    elseif     if __State == 6430 then
+        nameLabel.TextXAlignment = Enum.TextXAlignment.Left
+        __State = 5948
+    elseif     if __State == 5948 then
+        nameLabel.TextTruncate = Enum.TextTruncate.AtEnd
+        __State = 1338
+    elseif     if __State == 1338 then
+        nameLabel.Parent = item
+        __State = 2633
+    elseif     if __State == 2633 then
+        local tpButton = Instance.new(__S(0x3b))
+        __State = 8733
+    elseif     if __State == 8733 then
+        tpButton.Size = UDim2.new(0.(16+12), 0, 0.(5+2), 0)
+        __State = 4038
+    elseif     if __State == 4038 then
+        tpButton.Position = UDim2.new(0.(5+2), 0, 0.(14+1), 0)
+        __State = 4188
+    elseif     if __State == 4188 then
+        tpButton.BackgroundColor3 = Color3.fromRGB((27+13), (24+16), (9+41))
+        __State = 3314
+    elseif     if __State == 3314 then
+        tpButton.Text = __S(0x3c)
+        __State = 4179
+    elseif     if __State == 4179 then
+        tpButton.TextColor3 = Color3.fromRGB((163+92), (217+38), (43+212))
+        __State = 3632
+    elseif     if __State == 3632 then
+        tpButton.TextSize = (7+2)
+        __State = 1643
+    elseif     if __State == 1643 then
+        tpButton.Font = Enum.Font.Code
+        __State = 4670
+    elseif     if __State == 4670 then
+        tpButton.AutoButtonColor = false
+        __State = 7151
+    elseif     if __State == 7151 then
+        tpButton.SelectionImageObject = Instance.new(__S(0x3d))
+        __State = 5781
+    elseif     if __State == 5781 then
+        tpButton.Parent = item
+        __State = 7242
+    elseif     if __State == 7242 then
+        local btnCorner = Instance.new(__S(0x3e))
+        __State = 5278
+    elseif     if __State == 5278 then
+        btnCorner.CornerRadius = UDim.new(0, (2+2))
+        __State = 1816
+    elseif     if __State == 1816 then
+        btnCorner.Parent = tpButton
+        __State = 2119
+    elseif     if __State == 2119 then
+        tpButton.MouseEnter:Connect(function() tpButton.BackgroundColor3 = Color3.fromRGB((12+48), (26+34), (19+61)) end)
+        __State = 7084
+    elseif     if __State == 7084 then
+        tpButton.MouseLeave:Connect(function() tpButton.BackgroundColor3 = Color3.fromRGB((14+26), (2+38), (26+24)) end)
+        __State = 4091
+    elseif     if __State == 4091 then
+        tpButton.MouseButton1Click:Connect(function()
+        __State = 8899
+    elseif     if __State == 8899 then
+        clickSound:Play()
+        __State = 2563
+    elseif     if __State == 2563 then
+        executeSequence(p)
+        __State = 5897
+    elseif     if __State == 5897 then
+        end)
+        __State = 4653
+    elseif     if __State == 4653 then
+        end
+        __State = 3166
+    elseif     if __State == 3166 then
+        end
+        __State = 7928
+    elseif     if __State == 7928 then
+        end
+        __State = 9868
+    elseif     if __State == 9868 then
+        end
+        __State = 1026
+    elseif     if __State == 1026 then
+        SearchBox:GetPropertyChangedSignal(__S(0x3f)):Connect(updatePlayerList)
+        __State = 8261
+    elseif     if __State == 8261 then
+        Players.PlayerAdded:Connect(updatePlayerList)
+        __State = 5633
+    elseif     if __State == 5633 then
+        Players.PlayerRemoving:Connect(updatePlayerList)
+        __State = 1736
+    elseif     if __State == 1736 then
+        updatePlayerList()
+        __State = 5853
+    elseif     if __State == 5853 then
+        local openBtn = Instance.new(__S(0x40))
+        __State = 2212
+    elseif     if __State == 2212 then
+        openBtn.Name = __S(0x41)
+        __State = 7438
+    elseif     if __State == 7438 then
+        openBtn.Size = UDim2.new(0, (32+10), 0, (8+34))
+        __State = 2060
+    elseif     if __State == 2060 then
+        openBtn.Position = UDim2.new(0.(1+4), 0, 0.(5+1), 0)
+        __State = 6157
+    elseif     if __State == 6157 then
+        openBtn.BackgroundColor3 = Color3.fromRGB((8+2), (6+4), (13+2))
+        __State = 6074
+    elseif     if __State == 6074 then
+        openBtn.Image = __S(0x42)
+        __State = 8941
+    elseif     if __State == 8941 then
+        openBtn.Visible = false
+        __State = 5130
+    elseif     if __State == 5130 then
+        openBtn.Active = true
+        __State = 1521
+    elseif     if __State == 1521 then
+        openBtn.SelectionImageObject = Instance.new(__S(0x43))
+        __State = 9395
+    elseif     if __State == 9395 then
+        openBtn.Parent = ScreenGui
+        __State = 1922
+    elseif     if __State == 1922 then
+        local openCorner = Instance.new(__S(0x44)) openCorner.CornerRadius = UDim.new(0, (3+7)) openCorner.Parent = openBtn
+        __State = 1621
+    elseif     if __State == 1621 then
+        local openStroke = Instance.new(__S(0x45)) openStroke.Color = Color3.fromRGB((48+12), (43+17), (68+12)) openStroke.Thickness = 1.(4+1) openStroke.Parent = openBtn
+        __State = 5375
+    elseif     if __State == 5375 then
+        local openDragging, openDragStart, openStartPos
+        __State = 5546
+    elseif     if __State == 5546 then
+        openBtn.InputBegan:Connect(function(input)
+        __State = 6819
+    elseif     if __State == 6819 then
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+        __State = 1496
+    elseif     if __State == 1496 then
+        openDragging = true
+        __State = 9856
+    elseif     if __State == 9856 then
+        openDragStart = input.Position
+        __State = 9076
+    elseif     if __State == 9076 then
+        openStartPos = openBtn.Position
+        __State = 4222
+    elseif     if __State == 4222 then
+        input.Changed:Connect(function()
+        __State = 1591
+    elseif     if __State == 1591 then
+        if input.UserInputState == Enum.UserInputState.End then openDragging = false end
+        __State = 4535
+    elseif     if __State == 4535 then
+        end)
+        __State = 7441
+    elseif     if __State == 7441 then
+        end
+        __State = 8830
+    elseif     if __State == 8830 then
+        end)
+        __State = 7699
+    elseif     if __State == 7699 then
+        UserInputService.InputChanged:Connect(function(input)
+        __State = 9475
+    elseif     if __State == 9475 then
+        if openDragging and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+        __State = 6519
+    elseif     if __State == 6519 then
+        local delta = input.Position - openDragStart
+        __State = 7165
+    elseif     if __State == 7165 then
+        openBtn.Position = UDim2.new(openStartPos.X.Scale, openStartPos.X.Offset + delta.X, openStartPos.Y.Scale, openStartPos.Y.Offset + delta.Y)
+        __State = 7748
+    elseif     if __State == 7748 then
+        end
+        __State = 3947
+    elseif     if __State == 3947 then
+        end)
+        __State = 1916
+    elseif     if __State == 1916 then
+        local minimizeBar = Instance.new(__S(0x46))
+        __State = 6579
+    elseif     if __State == 6579 then
+        minimizeBar.Name = __S(0x47)
+        __State = 3774
+    elseif     if __State == 3774 then
+        minimizeBar.Size = UDim2.new(0, (55+35), 0, (3+13))
+        __State = 8069
+    elseif     if __State == 8069 then
+        minimizeBar.Position = UDim2.new(0.(3+2), -(6+39), 1, -(7+13))
+        __State = 3170
+    elseif     if __State == 3170 then
+        minimizeBar.BackgroundColor3 = Color3.fromRGB((1+19), (19+1), (1+27))
+        __State = 3907
+    elseif     if __State == 3907 then
+        minimizeBar.BackgroundTransparency = 0.(1+2)
+        __State = 3397
+    elseif     if __State == 3397 then
+        minimizeBar.Text = __S(0x48)
+        __State = 6246
+    elseif     if __State == 6246 then
+        minimizeBar.TextColor3 = Color3.fromRGB((104+76), (85+95), (101+79))
+        __State = 9877
+    elseif     if __State == 9877 then
+        minimizeBar.Font = Enum.Font.Code
+        __State = 7877
+    elseif     if __State == 7877 then
+        minimizeBar.TextSize = (7+2)
+        __State = 4761
+    elseif     if __State == 4761 then
+        minimizeBar.AutoButtonColor = false
+        __State = 1094
+    elseif     if __State == 1094 then
+        minimizeBar.SelectionImageObject = Instance.new(__S(0x49))
+        __State = 3778
+    elseif     if __State == 3778 then
+        minimizeBar.Parent = MainFrame
+        __State = 4858
+    elseif     if __State == 4858 then
+        local minCorner = Instance.new(__S(0x4a)) minCorner.CornerRadius = UDim.new(0, (4+2)) minCorner.Parent = minimizeBar
+        __State = 7487
+    elseif     if __State == 7487 then
+        minimizeBar.MouseEnter:Connect(function()
+        __State = 4760
+    elseif     if __State == 4760 then
+        minimizeBar.BackgroundColor3 = Color3.fromRGB((16+19), (5+30), (46+4))
+        __State = 9766
+    elseif     if __State == 9766 then
+        minimizeBar.TextColor3 = Color3.fromRGB((61+194), (182+73), (216+39))
+        __State = 5091
+    elseif     if __State == 5091 then
+        end)
+        __State = 2646
+    elseif     if __State == 2646 then
+        minimizeBar.MouseLeave:Connect(function()
+        __State = 3923
+    elseif     if __State == 3923 then
+        minimizeBar.BackgroundColor3 = Color3.fromRGB((9+11), (8+12), (26+2))
+        __State = 2531
+    elseif     if __State == 2531 then
+        minimizeBar.TextColor3 = Color3.fromRGB((82+98), (100+80), (75+105))
+        __State = 1172
+    elseif     if __State == 1172 then
+        end)
+        __State = 5072
+    elseif     if __State == 5072 then
+        local originalSize = UDim2.new(0, (7+253), 0, (98+182))
+        __State = 5393
+    elseif     if __State == 5393 then
+        local minimized = false
+        __State = 4420
+    elseif     if __State == 4420 then
+        minimizeBar.MouseButton1Click:Connect(function()
+        __State = 9591
+    elseif     if __State == 9591 then
+        if minimized then return end
+        __State = 3096
+    elseif     if __State == 3096 then
+        minimized = true
+        __State = 4256
+    elseif     if __State == 4256 then
+        clickSound:Play()
+        __State = 6854
+    elseif     if __State == 6854 then
+        local currentPos = MainFrame.Position
+        __State = 9699
+    elseif     if __State == 9699 then
+        local targetPos = UDim2.new(currentPos.X.Scale, currentPos.X.Offset + (28+72), currentPos.Y.Scale, currentPos.Y.Offset + (42+8))
+        __State = 3695
+    elseif     if __State == 3695 then
+        local shrinkTween = TweenService:Create(MainFrame, TweenInfo.new(0.(17+8), Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+        __State = 7140
+    elseif     if __State == 7140 then
+        Size = UDim2.new(0, (46+14), 0, (9+11)),
+        __State = 9724
+    elseif     if __State == 9724 then
+        Position = targetPos,
+        __State = 3054
+    elseif     if __State == 3054 then
+        BackgroundTransparency = 1
+        __State = 1458
+    elseif     if __State == 1458 then
+        })
+        __State = 3933
+    elseif     if __State == 3933 then
+        shrinkTween:Play()
+        __State = 3452
+    elseif     if __State == 3452 then
+        shrinkTween.Completed:Connect(function()
+        __State = 6477
+    elseif     if __State == 6477 then
+        MainFrame.Visible = false
+        __State = 8261
+    elseif     if __State == 8261 then
+        openBtn.Visible = true
+        __State = 6760
+    elseif     if __State == 6760 then
+        end)
+        __State = 3245
+    elseif     if __State == 3245 then
+        end)
+        __State = 8819
+    elseif     if __State == 8819 then
+        openBtn.MouseButton1Click:Connect(function()
+        __State = 5025
+    elseif     if __State == 5025 then
+        if not minimized then return end
+        __State = 7655
+    elseif     if __State == 7655 then
+        clickSound:Play()
+        __State = 2428
+    elseif     if __State == 2428 then
+        openBtn.Visible = false
+        __State = 3331
+    elseif     if __State == 3331 then
+        MainFrame.Visible = true
+        __State = 2713
+    elseif     if __State == 2713 then
+        local currentPos = MainFrame.Position
+        __State = 9954
+    elseif     if __State == 9954 then
+        local targetPos = UDim2.new(currentPos.X.Scale, currentPos.X.Offset - (19+81), currentPos.Y.Scale, currentPos.Y.Offset - (28+22))
+        __State = 3797
+    elseif     if __State == 3797 then
+        local restoreTween = TweenService:Create(MainFrame, TweenInfo.new(0.(7+18), Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+        __State = 9379
+    elseif     if __State == 9379 then
+        Size = originalSize,
+        __State = 6604
+    elseif     if __State == 6604 then
+        Position = targetPos,
+        __State = 3776
+    elseif     if __State == 3776 then
+        BackgroundTransparency = 0
+        __State = 9605
+    elseif     if __State == 9605 then
+        })
+        __State = 2288
+    elseif     if __State == 2288 then
+        restoreTween:Play()
+        __State = 2790
+    elseif     if __State == 2790 then
+        restoreTween.Completed:Connect(function()
+        __State = 7202
+    elseif     if __State == 7202 then
+        minimized = false
+        __State = 2553
+    elseif     if __State == 2553 then
+        end)
+        __State = 6082
+    elseif     if __State == 6082 then
+        end)
+        __State = 1504
+    elseif     if __State == 1504 then
+        CloseBtn.MouseButton1Click:Connect(function()
+        __State = 5403
+    elseif     if __State == 5403 then
+        clickSound:Play()
+        __State = 3161
+    elseif     if __State == 3161 then
+        if ScreenGui then ScreenGui:Destroy() end
+        __State = 5301
+    elseif     if __State == 5301 then
+        end)
+        __State = 5187
+    elseif     if __State == 5187 then
+        print(__S(0x4b))
+        __State = 9999
+    elseif  __State == 9999 then break end
+end
