@@ -1,2 +1,0 @@
-local __K=66 local __S=function(t)local r={} for i=1,#t do r[i]=string.char(t[i]~__K) end return table.concat(r)end
-print(__S({10,39,46,46,45,98,6,39,46,54,35}))
