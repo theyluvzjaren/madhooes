@@ -1,0 +1,2 @@
+local __K=66 local __S=function(t)local r={} for i=1,#t do r[i]=string.char((t[i]-__K)%256) end return table.concat(r)end
+print(__S({138,167,174,174,177,98,134,167,174,182,163}))
