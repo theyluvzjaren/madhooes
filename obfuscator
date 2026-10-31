@@ -1,0 +1,7 @@
+local __K=66 local __D={{138,167,174,174,177,98,134,167,174,182,163}} local __G={} 
+for i=1,#__D do local t=__D[i] local r={} 
+for j=1,#t do r[j]=string.char((t[j]-__K)%256) end 
+__G[i]=table.concat(r) end
+pcall(function() if debug and debug.gethook and debug.gethook() then while true do end end end)
+
+print(__G[0x1])
